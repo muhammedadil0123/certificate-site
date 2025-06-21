@@ -15,6 +15,7 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: #f5f5f5;
             line-height: 1.6;
+            overflow-x: hidden;
         }
 
         .header {
@@ -311,6 +312,38 @@
 
         .dropdown-item:hover {
             background-color: #f1f1f1;
+        }
+
+        .dropdown-item-l2 {
+            position: relative;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 15px;
+            cursor: pointer;
+            color: #666;
+        }
+
+        .sub-dropdown-content-l3 {
+            display: none;
+            position: absolute;
+            top: 0;
+            right: 100%;
+            background-color: white;
+            min-width: 200px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.1);
+            z-index: 1002;
+            border-radius: 8px;
+            padding: 8px 0;
+        }
+
+        .sub-dropdown-content-l3.show {
+            display: block;
+        }
+
+        #desktop-admission-submenu {
+            left: 100%;
+            right: auto;
         }
 
         .logos a .logo {
@@ -866,14 +899,6 @@
             color: #000;
         }
 
-        .custom-login-sub-item .custom-login-arrow {
-            /* transition: transform 0.3s; */ /* This line is removed in the final code */
-        }
-
-        .custom-login-sub-item.open .custom-login-arrow {
-            /* transform: rotate(90deg); */ /* This line is removed in the final code */
-        }
-        
         .custom-nested-submenu {
             max-height: 0;
             overflow: hidden;
@@ -1058,8 +1083,34 @@
                         <div class="dropdown-item">
                             <a>CTS <span class="right-arrow"></span></a>
                             <div class="sub-dropdown-content">
-                                <a>Admission</a>
-                                <a>Examination</a>
+                                <div class="dropdown-item-l2" id="desktop-admission-toggler">
+                                    <span>Admission</span>
+                                    <span class="right-arrow"></span>
+                                    <div class="sub-dropdown-content-l3" id="desktop-admission-submenu">
+                                        <a href="https://www.skillindiadigital.gov.in/account?type=ItiUser" class="custom-login-submenu-item">ITI</a>
+                                        <a href="https://www.skillindiadigital.gov.in/account?type=NstiUser" class="custom-login-submenu-item">NSTI</a>
+                                        <a href="https://www.skillindiadigital.gov.in/account?type=DgtUser" class="custom-login-submenu-item">DGT Admin</a>
+                                        <a href="https://www.skillindiadigital.gov.in/account?type=StateUser" class="custom-login-submenu-item">State Admin</a>
+                                    </div>
+                                </div>
+                                <div class="dropdown-item-l2" id="desktop-examination-toggler">
+                                    <span>Examination</span>
+                                    <span class="right-arrow"></span>
+                                    <div class="sub-dropdown-content-l3" id="desktop-examination-submenu">
+                                        <a href="https://www.skillindiadigital.gov.in" class="custom-login-submenu-item">DGT TT CELL</a>
+                                        <a href="https://www.skillindiadigital.gov.in" class="custom-login-submenu-item">DGT TC CELL</a>
+                                        <a href="https://www.skillindiadigital.gov.in" class="custom-login-submenu-item">Examiner</a>
+                                        <a href="https://www.skillindiadigital.gov.in" class="custom-login-submenu-item">Examination Controller</a>
+                                        <a href="https://www.skillindiadigital.gov.in" class="custom-login-submenu-item">ITI/NSTI Approver</a>
+                                        <a href="https://www.skillindiadigital.gov.in" class="custom-login-submenu-item">ITI/NSTI Creator</a>
+                                        <a href="https://www.skillindiadigital.gov.in" class="custom-login-submenu-item">Nodal ITI</a>
+                                        <a href="https://www.skillindiadigital.gov.in" class="custom-login-submenu-item">NIMI Admin</a>
+                                        <a href="https://www.skillindiadigital.gov.in" class="custom-login-submenu-item">NPIU Creator</a>
+                                        <a href="https://www.skillindiadigital.gov.in" class="custom-login-submenu-item">RDSDE</a>
+                                        <a href="https://www.skillindiadigital.gov.in" class="custom-login-submenu-item">State Admin</a>
+                                        <a href="https://www.skillindiadigital.gov.in" class="custom-login-submenu-item">Trainee</a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -1346,6 +1397,32 @@
                 setTimeout(() => {
                     ctsSubmenu.style.maxHeight = ctsSubmenu.scrollHeight + 'px';
                 }, 300);
+            });
+        }
+
+        // Desktop admission menu logic
+        const desktopAdmissionToggler = document.getElementById('desktop-admission-toggler');
+        const desktopAdmissionSubmenu = document.getElementById('desktop-admission-submenu');
+
+        if(desktopAdmissionToggler) {
+            desktopAdmissionToggler.addEventListener('mouseenter', () => {
+                desktopAdmissionSubmenu.classList.add('show');
+            });
+            desktopAdmissionToggler.addEventListener('mouseleave', () => {
+                desktopAdmissionSubmenu.classList.remove('show');
+            });
+        }
+
+        // Desktop examination menu logic
+        const desktopExaminationToggler = document.getElementById('desktop-examination-toggler');
+        const desktopExaminationSubmenu = document.getElementById('desktop-examination-submenu');
+
+        if(desktopExaminationToggler) {
+            desktopExaminationToggler.addEventListener('mouseenter', () => {
+                desktopExaminationSubmenu.classList.add('show');
+            });
+            desktopExaminationToggler.addEventListener('mouseleave', () => {
+                desktopExaminationSubmenu.classList.remove('show');
             });
         }
 
