@@ -547,14 +547,14 @@
         .custom-sidebar {
             position: fixed;
             top: 0;
-            left: -100vw;
-            width: 380px;
+            left: -100%;
+            width: 80vw;
+            max-width: 380px;
             height: 100vh;
             background: #fff;
             z-index: 2000;
             box-shadow: 2px 0 10px rgba(0,0,0,0.1);
             transition: left 0.3s cubic-bezier(.4,0,.2,1);
-            /* padding: 0 0 0 0; */
             padding-right: 30px;
             padding-left: 30px;
             padding-top: 0;
@@ -574,14 +574,12 @@
             font-size: 2rem;
             color: #333;
             align-self: flex-start;
-            /* margin: 32px 0 50px 32px; */
             margin-top: 32px;
             margin-bottom: 50px;
             cursor: pointer;
         }
         .custom-sidebar-btn {
             width: calc(100% - 64px);
-            /* margin-left: 32px; */
             margin-right: 32px;
             margin-bottom: 0;
             padding: 8px 0;
@@ -601,7 +599,6 @@
             color: #fff;
             justify-content: center;
             border-radius: 8px;
-            /* margin-bottom: 40px; */
         }
         .custom-sidebar-login {
             width: 100px;
@@ -626,8 +623,6 @@
             margin-top: 0;
         }
         .custom-sidebar-arrow {
-            /* font-size: 10px;
-            margin-left: 8px; */
             display: inline-block;
             width: 6px;
             height: 6px;
@@ -636,12 +631,26 @@
             transform: rotate(45deg);
         }
         .custom-sidebar-divider {
-            /* width: 100%; */
-            width: 280px;
+            width: 100%;
             margin: 24px 0 24px 0;
             height: 1px;
             background: #ededed;
             border: none;
+        }
+        @media (max-width: 600px) {
+            .custom-sidebar {
+                width: 90vw;
+                max-width: 95vw;
+                left: -100vw;
+            }
+            .custom-sidebar-btn {
+                font-size: 13px;
+            }
+        }
+        @media (max-width: 400px) {
+            .custom-sidebar-btn {
+                font-size: 12px;
+            }
         }
     </style>
 </head>
@@ -761,15 +770,6 @@
     </main>
 
     <script>
-        // const menuToggle = document.getElementById('menu-toggle');
-        // const navMenu = document.getElementById('nav-menu');
-
-        // if (menuToggle && navMenu) {
-        //     menuToggle.addEventListener('click', () => {
-        //         navMenu.classList.toggle('active');
-        //         menuToggle.classList.toggle('active');
-        //     });
-        // }
 
         const linksToggler = document.getElementById('important-links-toggler');
         if (linksToggler) {
