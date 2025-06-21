@@ -119,14 +119,14 @@
         }
 
         .login-item {
-            border: 1px solid #ff7043;
+            border: 1px solid #df6e12;
             padding: 8px 15px;
             border-radius: 8px;
-            color: #ff7043;
+            color: #df6e12;
         }
 
         .register-btn {
-            background-color: #ff7043;
+            background-color: #df6e12;
             color: white;
             border: none;
             padding: 12px 20px;
@@ -137,7 +137,7 @@
         }
 
         .register-btn:hover {
-            background-color: #f4511e;
+            background-color: #df6e12;
         }
 
         .main-content {
@@ -532,9 +532,136 @@
                 height: 24px;
             }
         }
+
+        /* Custom Sidebar styles */
+        .custom-sidebar-overlay {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.3);
+            z-index: 1999;
+        }
+        .custom-sidebar-overlay.active {
+            display: block;
+        }
+        .custom-sidebar {
+            position: fixed;
+            top: 0;
+            left: -100vw;
+            width: 380px;
+            height: 100vh;
+            background: #fff;
+            z-index: 2000;
+            box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+            transition: left 0.3s cubic-bezier(.4,0,.2,1);
+            /* padding: 0 0 0 0; */
+            padding-right: 30px;
+            padding-left: 30px;
+            padding-top: 0;
+            padding-bottom: 0;
+            border-top-right-radius: 20px;
+            border-bottom-right-radius: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        .custom-sidebar.active {
+            left: 0;
+        }
+        .custom-sidebar-close {
+            background: none;
+            border: none;
+            font-size: 2rem;
+            color: #333;
+            align-self: flex-start;
+            /* margin: 32px 0 50px 32px; */
+            margin-top: 32px;
+            margin-bottom: 50px;
+            cursor: pointer;
+        }
+        .custom-sidebar-btn {
+            width: calc(100% - 64px);
+            /* margin-left: 32px; */
+            margin-right: 32px;
+            margin-bottom: 0;
+            padding: 8px 0;
+            background: #fff;
+            border: none;
+            border-radius: 12px;
+            font-size: 14px;
+            font-weight: 600;
+            text-align: left;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            box-sizing: border-box;
+        }
+        .custom-sidebar-register {
+            background: #df6e12;
+            color: #fff;
+            justify-content: center;
+            border-radius: 8px;
+            /* margin-bottom: 40px; */
+        }
+        .custom-sidebar-login {
+            width: 100px;
+            border: 1px solid #ff7043;
+            color: #ff7043;
+            background: #fff;
+            justify-content: center;
+            padding-left: 20px;
+            padding-right: 20px;
+            padding-bottom: 8px;
+            padding-top: 8px;
+            border-radius: 8px;
+        }
+        .custom-sidebar-links {
+            border: none;
+            color: #767676;
+            background: #fff;
+            justify-content: space-between;
+            font-weight: 300;
+            font-size: 17px;
+            margin-bottom: 0;
+            margin-top: 0;
+        }
+        .custom-sidebar-arrow {
+            /* font-size: 10px;
+            margin-left: 8px; */
+            display: inline-block;
+            width: 6px;
+            height: 6px;
+            border: solid #666;
+            border-width: 0 2px 2px 0;
+            transform: rotate(45deg);
+        }
+        .custom-sidebar-divider {
+            /* width: 100%; */
+            width: 280px;
+            margin: 24px 0 24px 0;
+            height: 1px;
+            background: #ededed;
+            border: none;
+        }
     </style>
 </head>
 <body>
+    <!-- Custom Sidebar Overlay -->
+    <div id="custom-sidebar-overlay" class="custom-sidebar-overlay"></div>
+    <!-- Custom Sidebar -->
+    <aside id="custom-sidebar" class="custom-sidebar">
+        <button class="custom-sidebar-close" id="custom-sidebar-close">&times;</button>
+        <button class="custom-sidebar-btn custom-sidebar-register" onclick="window.location.href='https://dgt.skillindiadigital.gov.in/registration'">REGISTER AS AN EXAMINER</button>
+        <div class="custom-sidebar-divider"></div>
+        <div class="custom-sidebar-btn custom-sidebar-login" id="custom-sidebar-login">
+            <span>LOGIN</span> <span class="custom-sidebar-arrow"></span>
+        </div>
+        <div class="custom-sidebar-divider"></div>
+        <div class="custom-sidebar-btn custom-sidebar-links" id="custom-sidebar-links">
+            <span>IMPORTANT LINKS</span> <span class="custom-sidebar-arrow"></span>
+        </div>
+        <div class="custom-sidebar-divider"></div>
+    </aside>
     <header class="header">
         <div class="header-container">
             <div class="logos">
@@ -686,6 +813,26 @@
                 return false;
             }
         };
+
+        // Custom Sidebar logic
+        const customMenuToggle = document.getElementById('menu-toggle');
+        const customSidebar = document.getElementById('custom-sidebar');
+        const customSidebarOverlay = document.getElementById('custom-sidebar-overlay');
+        const customSidebarClose = document.getElementById('custom-sidebar-close');
+
+        function openCustomSidebar() {
+            customSidebar.classList.add('active');
+            customSidebarOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        function closeCustomSidebar() {
+            customSidebar.classList.remove('active');
+            customSidebarOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+        if (customMenuToggle) customMenuToggle.addEventListener('click', openCustomSidebar);
+        if (customSidebarClose) customSidebarClose.addEventListener('click', closeCustomSidebar);
+        if (customSidebarOverlay) customSidebarOverlay.addEventListener('click', closeCustomSidebar);
     </script>
 </body>
 </html>
