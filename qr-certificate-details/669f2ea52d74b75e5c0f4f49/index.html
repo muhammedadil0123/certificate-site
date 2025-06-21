@@ -319,13 +319,21 @@
 
         @media (max-width: 1020px) {
             .header-container {
-                justify-content: flex-start;
-                padding-bottom: 8px;
+                justify-content: space-between;
+                padding: 8px 15px;
+                flex-wrap: nowrap;
+            }
+
+            .logos {
+                gap: 8px;
+                flex-shrink: 1;
+                min-width: 0;
             }
 
             .menu-toggle {
                 display: flex;
-                margin-right: 0px;
+                margin-right: 10px;
+                flex-shrink: 0;
             }
 
             .nav {
@@ -345,11 +353,13 @@
             }
 
             .logo, .logo-skill {
-                height: 30px;
+                height: 28px;
+                flex-shrink: 1;
             }
 
             .dgt_logo {
-                height: 40px;
+                height: 38px;
+                flex-shrink: 1;
             }
 
             .nav-item,
@@ -420,26 +430,52 @@
             }
 
             .logos a .logo {
-                height: 30px;
+                height: 28px;
             }
         }
 
         @media (max-width: 480px) {
             .header-container {
-                padding-bottom: 8px;
-                padding-top: 5px;
+                padding: 5px 10px 8px 10px;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+            .logos {
+                gap: 6px;
+                flex-wrap: nowrap;
+                overflow-x: auto;
+                flex-shrink: 1;
+                min-width: 0;
+            }
+
+            .logo, .logo-skill {
+                height: 24px;
+                flex-shrink: 1;
+                min-width: 20px;
+            }
+
+            .dgt_logo {
+                height: 32px;
+                flex-shrink: 1;
+                min-width: 25px;
+            }
+
+            .menu-toggle {
+                flex-shrink: 0;
+                margin-right: 5px;
             }
             
             .main-content {
-                padding: 15px 10px 80px;
+                padding: 15px 15px 80px;
                 display: flex;
                 justify-content: center;
                 align-items: flex-start;
             }
             
             .container {
-                margin-bottom: 24px;
-                padding: 0 5px;
+                margin: 0;
+                padding: 0 15px;
                 width: 100%;
                 display: flex;
                 justify-content: center;
@@ -447,11 +483,9 @@
             
             .trainee-card {
                 padding: 20px 20px 30px;
-                margin-top: 16px;
-                margin-left: 0;
-                margin-right: 0;
+                margin: 16px 0 0 0;
                 width: 100%;
-                max-width: 400px;
+                max-width: none;
             }
             
             .title-divider {
@@ -492,6 +526,10 @@
             
             .title-section {
                 padding-left: 0;
+            }
+
+            .logos a .logo {
+                height: 24px;
             }
         }
     </style>
