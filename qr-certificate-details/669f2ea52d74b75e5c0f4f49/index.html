@@ -468,16 +468,16 @@
             
             .main-content {
                 padding: 15px 15px 80px;
-                display: flex;
+            display: flex;
                 justify-content: center;
                 align-items: flex-start;
-            }
-            
+        }
+
             .container {
                 margin: 0;
                 padding: 0 15px;
                 width: 100%;
-                display: flex;
+            display: flex;
                 justify-content: center;
             }
             
@@ -507,7 +507,7 @@
             
             .value {
                 font-size: 14px;
-                color: #666;
+            color: #666;
                 font-weight: 350;
                 margin-bottom: 5px;
             }
@@ -600,6 +600,11 @@
             justify-content: center;
             border-radius: 8px;
         }
+        .custom-sidebar-login,
+        .custom-sidebar-links,
+        .custom-sidebar-register {
+            cursor: pointer;
+        }
         .custom-sidebar-login {
             width: 100px;
             border: 1px solid #ff7043;
@@ -652,6 +657,278 @@
                 font-size: 12px;
             }
         }
+
+        /* Custom Important Links Sidebar (hidden by default) */
+        .custom-links-sidebar {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 90vw;
+            max-width: 400px;
+            height: 100vh;
+            background: #fff;
+            z-index: 2100;
+            box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+            border-top-right-radius: 20px;
+            border-bottom-right-radius: 20px;
+            padding-top: 0;padding-bottom: 0;padding-left: 20px;padding-right: 50px;
+            flex-direction: column;
+            animation: customLinksSlideIn 0.3s cubic-bezier(.4,0,.2,1);
+        }
+        @keyframes customLinksSlideIn {
+            from { left: -100vw; }
+            to { left: 0; }
+        }
+        .custom-links-sidebar.active {
+            display: flex;
+        }
+        .custom-links-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 32px 24px 24px 24px;
+        }
+        .custom-links-back {
+            background: none;
+            border: none;
+            color: #000000;
+            font-size: 14px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            padding: 0;
+        }
+        .custom-links-back-arrow {
+            font-size: 18px;
+            margin-right: 6px;
+            color: #df6e12;
+        }
+        .custom-links-close {
+            background: none;
+            border: none;
+            font-size: 28px;
+            color: #333;
+            cursor: pointer;
+            font-weight: 300;
+        }
+        .custom-links-list {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            padding: 0 24px;
+        }
+        .custom-links-item {
+            color: #767676;
+            font-size: 18px;
+            font-weight: 400;
+            text-decoration: none;
+            padding: 18px 0 18px 0;
+            transition: color 0.2s;
+        }
+        .custom-links-item:hover {
+            color: #df6e12;
+        }
+        .custom-links-divider {
+            width: 100%;
+            height: 1px;
+            background: #ededed;
+        }
+        @media (max-width: 600px) {
+            .custom-links-sidebar {
+                width: 95vw;
+                max-width: 95vw;
+                padding-right: 12px;
+            }
+            .custom-links-header {
+                padding: 24px 12px 18px 12px;
+            }
+            .custom-links-list {
+                padding: 0 12px;
+            }
+            .custom-links-item {
+                font-size: 16px;
+                padding: 14px 0 14px 0;
+            }
+        }
+
+        /* Custom Login Sidebar (hidden by default) */
+        .custom-login-sidebar {
+                display: none;
+            position: fixed;
+            top: 0;
+                left: 0;
+            width: 90vw;
+            max-width: 400px;
+            height: 100vh;
+            background: #fff;
+            z-index: 2200; /* Higher than other sidebars */
+            box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+            border-top-right-radius: 20px;
+            border-bottom-right-radius: 20px;
+            padding: 0 24px;
+                flex-direction: column;
+            animation: customLoginSlideIn 0.3s cubic-bezier(.4,0,.2,1);
+            overflow-y: auto;
+        }
+        @keyframes customLoginSlideIn {
+            from { left: -100vw; }
+            to { left: 0; }
+        }
+        .custom-login-sidebar.active {
+                display: flex;
+            }
+        .custom-login-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 32px 0;
+            width: 100%;
+        }
+        .custom-login-back {
+            background: none; border: none; color: #000000; font-size: 14px;
+            font-weight: 500; display: flex; align-items: center; cursor: pointer; padding: 0;
+        }
+        .custom-login-back-arrow {
+            font-size: 18px; margin-right: 6px; color: #df6e12;
+        }
+        .custom-login-close {
+            background: none; border: none; font-size: 28px; color: #333;
+            cursor: pointer; font-weight: 300;
+        }
+        .custom-login-content {
+            width: 100%;
+        }
+        .custom-login-title {
+            font-size: 15px;
+            font-weight: 700;
+            color: #000;
+            margin-bottom: 24px;
+        }
+        .custom-login-item {
+                display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 18px;
+            color: #767676;
+            padding: 18px 0;
+            cursor: pointer;
+            border-top: 1px solid #ededed;
+        }
+        .custom-login-item.open {
+            color: #000;
+            font-weight: 700;
+            border-top: none;
+        }
+        .custom-login-item#custom-login-cits-toggle.open {
+            border-top: none;
+        }
+        .custom-login-item-first {
+            border-top: none !important;
+        }
+        .custom-login-arrow {
+            display: inline-block;
+            width: 6px;
+            height: 6px;
+            border: solid #666;
+            border-width: 0 2px 2px 0;
+            transform: rotate(45deg);
+        }
+        .custom-login-submenu {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            padding-left: 0;
+            background-color: #fff;
+        }
+        .custom-login-submenu-item {
+            display: block;
+            color: #888;
+            padding: 12px 0;
+            text-decoration: none;
+            border-bottom: 1px solid #ededed;
+        }
+        
+        .custom-login-sub-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 16px;
+            color: #888;
+            padding: 14px 0;
+            cursor: pointer;
+            border-bottom: 1px solid #ededed;
+        }
+
+        .custom-login-sub-item.open {
+            font-weight: 700;
+            color: #000;
+        }
+
+        .custom-login-sub-item .custom-login-arrow {
+            /* transition: transform 0.3s; */ /* This line is removed in the final code */
+        }
+
+        .custom-login-sub-item.open .custom-login-arrow {
+            /* transform: rotate(90deg); */ /* This line is removed in the final code */
+        }
+        
+        .custom-nested-submenu {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            padding-left: 0;
+            background-color: transparent;
+        }
+
+        /* Styles for the new nested submenus */
+        .custom-cts-details-panel {
+            padding-top: 20px;
+        }
+        
+        .custom-cts-details-back-btn {
+            background: none;
+            border: none;
+            color: #000;
+            font-size: 14px;
+            font-weight: 500;
+                display: flex;
+            align-items: center;
+            cursor: pointer;
+            padding: 0;
+            margin-bottom: 18px;
+        }
+        
+        .custom-cts-details-back-arrow {
+            font-size: 18px;
+            margin-right: 6px;
+            color: #df6e12;
+        }
+        
+        .custom-cts-details-title {
+            font-size: 15px;
+            font-weight: 700;
+            color: #000;
+            margin-bottom: 12px;
+        }
+        
+        .custom-cts-details-list-item {
+            display: block;
+            color: #767676;
+            font-size: 16px;
+            padding: 18px 0;
+            text-decoration: none;
+            border-bottom: 1px solid #ededed;
+        }
+        
+        .custom-cts-details-list-item:first-child {
+            border-top: 1px solid #ededed;
+        }
+        
+        .custom-cts-details-list-item-highlight {
+            color: #df6e12;
+        }
     </style>
 </head>
 <body>
@@ -671,14 +948,86 @@
         </div>
         <div class="custom-sidebar-divider"></div>
     </aside>
+    <!-- Custom Important Links Sidebar (hidden by default) -->
+    <div id="custom-links-sidebar" class="custom-links-sidebar">
+        <div class="custom-links-header">
+            <button class="custom-links-back" id="custom-links-back">
+                <span class="custom-links-back-arrow">&#8592;</span> Back
+            </button>
+            <button class="custom-links-close" id="custom-links-close">&times;</button>
+        </div>
+        <div class="custom-links-list">
+            <a href="https://dgt.gov.in/" target="_blank" class="custom-links-item">DGT</a>
+            <div class="custom-links-divider"></div>
+            <a href="https://www.apprenticeshipindia.gov.in/" target="_blank" class="custom-links-item">Apprenticeship</a>
+            <div class="custom-links-divider"></div>
+            <a href="https://nios.ac.in/" target="_blank" class="custom-links-item">N.I.O.S.</a>
+        </div>
+    </div>
+    <!-- Custom Login Sidebar (hidden by default) -->
+    <div id="custom-login-sidebar" class="custom-login-sidebar">
+        <div class="custom-login-header">
+            <button class="custom-login-back" id="custom-login-back">
+                <span class="custom-login-back-arrow">&#8592;</span> Back
+            </button>
+            <button class="custom-login-close" id="custom-login-close">&times;</button>
+        </div>
+        <div class="custom-login-content">
+            <h2 class="custom-login-title">Login</h2>
+            <div class="custom-login-item custom-login-item-first" id="custom-login-cits-toggle">
+                <span>CITS</span>
+                <span class="custom-login-arrow"></span>
+            </div>
+            <div class="custom-login-submenu" id="custom-login-cits-submenu">
+                <a href="https://dgt.skillindiadigital.gov.in/" class="custom-login-submenu-item">Trainee</a>
+                <a href="https://dgt.skillindiadigital.gov.in/" class="custom-login-submenu-item">ITOT/NSTI Creator</a>
+                <a href="https://dgt.skillindiadigital.gov.in/" class="custom-login-submenu-item">ITOT/NSTI Approver</a>
+            </div>
+            <div class="custom-login-item" id="custom-login-cts-toggle">
+                <span>CTS</span>
+                <span class="custom-login-arrow"></span>
+            </div>
+            <div class="custom-login-submenu" id="custom-login-cts-submenu">
+                <div class="custom-login-sub-item" id="custom-cts-admission-toggle">
+                    <span>Admission</span>
+                    <span class="custom-login-arrow"></span>
+                </div>
+                <div class="custom-nested-submenu" id="custom-admission-submenu">
+                    <a href="https://www.skillindiadigital.gov.in/account?type=ItiUser" class="custom-login-submenu-item">ITI</a>
+                    <a href="https://www.skillindiadigital.gov.in/account?type=NstiUser" class="custom-login-submenu-item">NSTI</a>
+                    <a href="https://www.skillindiadigital.gov.in/account?type=DgtUser" class="custom-login-submenu-item">DGT Admin</a>
+                    <a href="https://www.skillindiadigital.gov.in/account?type=StateUser" class="custom-login-submenu-item">State Admin</a>
+                </div>
+
+                <div class="custom-login-sub-item" id="custom-cts-examination-toggle">
+                    <span>Examination</span>
+                    <span class="custom-login-arrow"></span>
+                </div>
+                <div class="custom-nested-submenu" id="custom-examination-submenu">
+                    <a href="https://www.skillindiadigital.gov.in" class="custom-login-submenu-item">DGT TT CELL</a>
+                    <a href="https://www.skillindiadigital.gov.in" class="custom-login-submenu-item">DGT TC CELL</a>
+                    <a href="https://www.skillindiadigital.gov.in" class="custom-login-submenu-item">Examiner</a>
+                    <a href="https://www.skillindiadigital.gov.in" class="custom-login-submenu-item">Examination Controller</a>
+                    <a href="https://www.skillindiadigital.gov.in" class="custom-login-submenu-item">ITI/NSTI Approver</a>
+                    <a href="https://www.skillindiadigital.gov.in" class="custom-login-submenu-item">ITI/NSTI Creator</a>
+                    <a href="https://www.skillindiadigital.gov.in" class="custom-login-submenu-item">Nodal ITI</a>
+                    <a href="https://www.skillindiadigital.gov.in" class="custom-login-submenu-item">NIMI Admin</a>
+                    <a href="https://www.skillindiadigital.gov.in" class="custom-login-submenu-item">NPIU Creator</a>
+                    <a href="https://www.skillindiadigital.gov.in" class="custom-login-submenu-item">RDSDE</a>
+                    <a href="https://www.skillindiadigital.gov.in" class="custom-login-submenu-item">State Admin</a>
+                    <a href="https://www.skillindiadigital.gov.in" class="custom-login-submenu-item">Trainee</a>
+                </div>
+            </div>
+        </div>
+    </div>
     <header class="header">
         <div class="header-container">
             <div class="logos">
-                <button class="menu-toggle" id="menu-toggle">
-                    <span class="bar"></span>
-                    <span class="bar"></span>
-                    <span class="bar"></span>
-                </button>
+            <button class="menu-toggle" id="menu-toggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
                 <img src="images/stm.png" alt="Government of India" class="logo">
                 <img src="images/skill_india_lap_logo.png" alt="Logo" class="logo">
                 <img src="images/skill_india_text_logo.png" alt="Skill India" class="logo-skill">
@@ -833,6 +1182,173 @@
         if (customMenuToggle) customMenuToggle.addEventListener('click', openCustomSidebar);
         if (customSidebarClose) customSidebarClose.addEventListener('click', closeCustomSidebar);
         if (customSidebarOverlay) customSidebarOverlay.addEventListener('click', closeCustomSidebar);
+
+        // Custom Important Links Sidebar logic
+        const customLinksSidebar = document.getElementById('custom-links-sidebar');
+        const customLinksBtn = document.getElementById('custom-sidebar-links');
+        const customLinksBack = document.getElementById('custom-links-back');
+        const customLinksClose = document.getElementById('custom-links-close');
+        const customSidebarMain = document.getElementById('custom-sidebar');
+
+        if (customLinksBtn && customLinksSidebar && customSidebarMain) {
+            customLinksBtn.addEventListener('click', function() {
+                customLinksSidebar.classList.add('active');
+                customSidebarMain.style.visibility = 'hidden';
+            });
+        }
+        if (customLinksBack && customLinksSidebar && customSidebarMain) {
+            customLinksBack.addEventListener('click', function() {
+                customLinksSidebar.classList.remove('active');
+                customSidebarMain.style.visibility = 'visible';
+            });
+        }
+        if (customLinksClose && customLinksSidebar) {
+            customLinksClose.addEventListener('click', function() {
+                customLinksSidebar.classList.remove('active');
+                // Also close the overlay and sidebar
+                document.getElementById('custom-sidebar-overlay').classList.remove('active');
+                document.body.style.overflow = '';
+            });
+        }
+
+        // Custom Login Sidebar Logic
+        const loginSidebar = document.getElementById('custom-login-sidebar');
+        const loginBtn = document.getElementById('custom-sidebar-login');
+        const loginBackBtn = document.getElementById('custom-login-back');
+        const loginCloseBtn = document.getElementById('custom-login-close');
+        const citsToggle = document.getElementById('custom-login-cits-toggle');
+        const citsSubmenu = document.getElementById('custom-login-cits-submenu');
+        const ctsToggle = document.getElementById('custom-login-cts-toggle');
+        const ctsSubmenu = document.getElementById('custom-login-cts-submenu');
+        const loginTitle = document.querySelector('.custom-login-title');
+
+        // New elements for nested submenus
+        const admissionToggle = document.getElementById('custom-cts-admission-toggle');
+        const admissionSubmenu = document.getElementById('custom-admission-submenu');
+        const examinationToggle = document.getElementById('custom-cts-examination-toggle');
+        const examinationSubmenu = document.getElementById('custom-examination-submenu');
+
+        if (loginBtn) {
+            loginBtn.addEventListener('click', () => {
+                loginSidebar.classList.add('active');
+                customSidebarMain.style.visibility = 'hidden';
+                if (loginTitle) loginTitle.style.display = 'block';
+            });
+        }
+        if (loginBackBtn) {
+            loginBackBtn.addEventListener('click', () => {
+                loginSidebar.classList.remove('active');
+                customSidebarMain.style.visibility = 'visible';
+                
+                // Reset CITS/CTS state when going back
+                citsToggle.classList.remove('open');
+                citsToggle.style.display = 'flex';
+                citsSubmenu.style.maxHeight = null;
+                ctsToggle.classList.remove('open');
+                ctsToggle.style.display = 'flex';
+                ctsSubmenu.style.maxHeight = null;
+                if (loginTitle) loginTitle.style.display = 'block';
+            });
+        }
+        if (loginCloseBtn) {
+            loginCloseBtn.addEventListener('click', () => {
+                loginSidebar.classList.remove('active');
+                closeCustomSidebar(); // Reuse the main sidebar close function
+            });
+        }
+        if (citsToggle) {
+            citsToggle.addEventListener('click', () => {
+                const isOpening = !citsToggle.classList.contains('open');
+                citsToggle.classList.toggle('open');
+                ctsToggle.style.display = isOpening ? 'none' : 'flex';
+                if (loginTitle) loginTitle.style.display = isOpening ? 'none' : 'block';
+
+                citsSubmenu.style.maxHeight = isOpening ? citsSubmenu.scrollHeight + 'px' : null;
+
+                // When closing CITS, ensure CTS sub-menus are hidden
+                if (!isOpening) {
+                    ctsSubmenu.style.display = 'block';
+                    if (admissionSubmenu) admissionSubmenu.style.maxHeight = null;
+                    if (examinationSubmenu) examinationSubmenu.style.maxHeight = null;
+                }
+            });
+        }
+        if (ctsToggle) {
+            ctsToggle.addEventListener('click', () => {
+                const isOpening = !ctsToggle.classList.contains('open');
+                ctsToggle.classList.toggle('open');
+                if (isOpening) {
+                    ctsSubmenu.style.maxHeight = ctsSubmenu.scrollHeight + 'px';
+                    citsToggle.style.display = 'none';
+                    if (loginTitle) loginTitle.style.display = 'none';
+                } else {
+                    ctsSubmenu.style.maxHeight = null;
+                    citsToggle.style.display = 'flex';
+                    if (loginTitle) loginTitle.style.display = 'block';
+
+                    // Also reset nested accordions
+                    admissionToggle.classList.remove('open');
+                    admissionSubmenu.style.maxHeight = null;
+                    admissionToggle.style.display = 'flex';
+                    examinationToggle.classList.remove('open');
+                    examinationSubmenu.style.maxHeight = null;
+                    examinationToggle.style.display = 'flex';
+                }
+            });
+        }
+
+        if (admissionToggle) {
+            admissionToggle.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const isOpening = !admissionToggle.classList.contains('open');
+
+                examinationToggle.classList.remove('open');
+                examinationSubmenu.style.maxHeight = null;
+
+                admissionToggle.classList.toggle('open');
+
+                if (isOpening) {
+                    admissionSubmenu.style.maxHeight = admissionSubmenu.scrollHeight + 'px';
+                    examinationToggle.style.display = 'none';
+                    ctsToggle.style.display = 'none';
+                } else {
+                    admissionSubmenu.style.maxHeight = null;
+                    examinationToggle.style.display = 'flex';
+                    ctsToggle.style.display = 'flex';
+                }
+                
+                setTimeout(() => {
+                    ctsSubmenu.style.maxHeight = ctsSubmenu.scrollHeight + 'px';
+                }, 300);
+            });
+        }
+
+        if (examinationToggle) {
+            examinationToggle.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const isOpening = !examinationToggle.classList.contains('open');
+
+                admissionToggle.classList.remove('open');
+                admissionSubmenu.style.maxHeight = null;
+
+                examinationToggle.classList.toggle('open');
+
+                if (isOpening) {
+                    examinationSubmenu.style.maxHeight = examinationSubmenu.scrollHeight + 'px';
+                    admissionToggle.style.display = 'none';
+                    ctsToggle.style.display = 'none';
+                } else {
+                    examinationSubmenu.style.maxHeight = null;
+                    admissionToggle.style.display = 'flex';
+                    ctsToggle.style.display = 'flex';
+                }
+
+                setTimeout(() => {
+                    ctsSubmenu.style.maxHeight = ctsSubmenu.scrollHeight + 'px';
+                }, 300);
+            });
+        }
+
     </script>
 </body>
 </html>
